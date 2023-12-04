@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.jsw.mapper.MemberMapper">
+	<insert id="write">
+		insert into member values(#{id},#{password},#{name});
+	</insert>
+	
+	<select id="list" resultType="com.jsw.model.MemberDTO">
+		select * from member;
+	</select>
+	
+	<select id="detail" resultType="com.jsw.model.MemberDTO">
+		select * from member where id=#{id};
+	</select>
+	
+	<select id="modify">
+		update member 
+		set password=#{password},
+			name=#{name} 
+		where id=#{id};
+	</select>
+	
+	<select id="remove">
+		delete from member 
+		where id=#{id};
+	</select>
+	
+	<select id="login" resultType="com.jsw.model.MemberDTO">
+		select * from member 
+		where id=#{id} and password=#{password}
+	</select>
+	
+</mapper>
